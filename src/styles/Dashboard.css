@@ -1,0 +1,48 @@
+.wholeDashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 24px;
+    position: relative;
+    top: 200px;
+    left: 140px;
+  }
+  
+  .searchFilter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .searchFilter input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 16px;
+    width: 300px;
+  }
+  
+  .sortFilter label {
+    margin-right: 8px;
+  }
+  
+  .sortFilter select {
+    margin-right: 16px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .DayPickerInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .DayPickerInput input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }
+  

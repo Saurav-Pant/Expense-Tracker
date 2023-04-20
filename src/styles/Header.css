@@ -1,0 +1,22 @@
+a{
+    color: none;
+    text-decoration: none;
+}
+.logo{
+    position: absolute;
+    top: 80px;
+    left: 150px;
+}
+
+.logo h1{
+    font-size: 2.5rem;
+    color: hsl(223, 16%, 37%);
+    font-family: 'Lato', sans-serif;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.logo span{
+    font-size: 2.6rem;
+}

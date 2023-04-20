@@ -1,0 +1,225 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
+
+.Login_Whole{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28vw;
+    height: 50vh;
+    background-image: linear-gradient(to right, hsl(246, 94%, 67%), hsl(265, 94%, 67%));
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 12rem;
+}
+
+.Login_text{
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 15px;
+    font-size: 35px;
+}
+
+.Login_text_2{
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 15px;
+}
+
+.byuser{
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px 0px;
+    margin-bottom: 13px;
+    width: 19vw;
+    height: 2rem;
+    background-color: hsl(248, 30%, 95%);
+}
+
+.SignIn{
+    border-radius: 15px;
+    border: none;
+    padding: 8px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 8vw;
+    background-image: linear-gradient(to right bottom, hsl(150, 62%, 65%), hsl(176, 68%, 64%));
+    color: white;
+    font-size: 15px;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.btns{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.btns>button{
+    border: none;
+    outline: none;
+    border-radius: 50px; 
+    font-size: 15px;
+    padding: 10px 13px;
+    margin: 5px 5px;
+    margin-bottom: 13px;
+    cursor: pointer;
+}
+
+.btns>button:hover{
+    background-image: linear-gradient(to right bottom, hsl(150, 62%, 65%), hsl(176, 68%, 64%));
+    color: white;
+}
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
+
+ .Login_Whole{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width:28vw;
+     max-width: 500px;
+     height: 50vh;
+     background-image: linear-gradient(to right, hsl(246, 94%, 67%), hsl(265, 94%, 67%));
+     border-radius: 30px;
+     margin: auto;
+     margin-top: 15rem;
+ }
+ 
+ .Login_text{
+     color: white;
+     text-align: center;
+     font-family: 'Roboto', sans-serif;
+     margin-bottom: 15px;
+     font-size: 2rem;
+ }
+
+ .input_password{
+  display: grid;
+  place-items: center;
+ }
+ 
+ .Login_text_2{
+     color: white;
+     text-align: center;
+     font-family: 'Roboto', sans-serif;
+     margin-top: 15px;
+ }
+ 
+ .byuser{
+     border: none;
+     outline: none;
+     border-radius: 20px;
+     padding: 0 4%;
+     /* margin: 5px 0px; */
+     /* margin-bottom: 13px; */
+     width: 15vw;
+     height: 1.8rem;
+     background-color: hsl(248, 30%, 95%);
+     font-size: 1rem;
+ }
+ 
+ .SignIn{
+     border-radius: 15px;
+     border: none;
+     padding: .5rem 2rem;
+     margin-top: 10px;
+     cursor: pointer;
+     /* width: 100%; */
+     background-image: linear-gradient(to right bottom, hsl(150, 62%, 65%), hsl(176, 68%, 64%));
+     color: white;
+     font-size: 1rem;
+ }
+ 
+ .btn{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ 
+ }
+ .btns{
+     display: flex ;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     margin-top: 10px;
+ }
+ 
+ .btns>button{
+     border: none;
+     outline: none;
+     border-radius: 50px;
+     font-size: 1rem;
+     padding: 10px 13px;
+     margin: 5px 5px;
+     margin-bottom: 13px;
+     cursor: pointer;
+ }
+ 
+ .btns>button:hover{
+     background-image: linear-gradient(to right bottom, hsl(150, 62%, 65%), hsl(176, 68%, 64%));
+     color: white;
+ }
+/* Mobile Styles */
+
+@media screen and (max-width: 576px) {
+    .Login_Whole{
+      width: 80vw;
+      height: 70vh;
+      margin-top: 6rem;
+      border-radius: 15px;
+    }
+  
+    .Login_text {
+      font-size: 25px;
+    }
+  
+    .Login_text_2 {
+      font-size: 18px;
+    }
+  
+    .byuser {
+      width: 70%;
+    }
+  
+    .SignIn {
+      width: 35%;
+    }
+  }
+  
+  /* Tablet Styles */
+  
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    .Login_Whole{
+      width: 40vw;
+      height: 50vh;
+      margin-top: 8rem;
+      border-radius: 20px;
+    }
+  
+    .Login_text {
+      font-size: 30px;
+    }
+  
+    .Login_text_2 {
+      font-size: 20px;
+    }
+  
+    .byuser {
+      width: 60%;
+    }
+  
+    .SignIn {
+      width: 30%;
+    }
+  }
+   
