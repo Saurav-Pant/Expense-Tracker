@@ -1,15 +1,15 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Header from './Header';
 import '../styles/Dashboard.css';
 import AddExpense from './AddExpense';
-// import UserContext from '../Context/UserContext';
-// import UserData from './UserData';
+import { ThemeContext } from '../context/theme';
 
 const Dashboard = () => {
+  const {theme,toggleTheme}=useContext(ThemeContext);
   return (
-    // <UserContext.Provider value={user}>
     <div>
       <Header />
+      <button  className='ml-3 text-3xl absolute top-10 right-10 drop-shadow-2xl ' onClick={toggleTheme}>{theme.icon}</button>
       <div className="wholeDashboard">
         {<div className="searchFilter">
           <input type="text" placeholder="Search expenses..." /> <br />
@@ -23,10 +23,8 @@ const Dashboard = () => {
           </div>
         </div>}
       </div>
-      {/* <UserData /> / */}
       <AddExpense/>
     </div>
-    // {/* </UserContext.Provider> */}
   
 )};
 

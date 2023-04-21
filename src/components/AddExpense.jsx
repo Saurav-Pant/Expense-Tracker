@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "../styles/AddExpense.css";
 import Create from "../components/Create";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../context/theme";
 
 const AddExpense = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const navigate=useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
@@ -28,6 +30,7 @@ const AddExpense = () => {
 
   return (
     <div>
+      <button  className='ml-3 text-3xl absolute top-10 right-10 drop-shadow-2xl ' onClick={toggleTheme}>{theme.icon}</button>
       {showForm ? (
         <Create 
           title={title}
