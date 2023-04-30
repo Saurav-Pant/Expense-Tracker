@@ -1,35 +1,55 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from "react"
 
-// // create a context for the theme
-export const ThemeContext = createContext();
+const ThemeContext = createContext("light")
 
-// // define the light and dark themes
-export const lightTheme = {
-  backgroundColor: '#FEFCF3',
-  textColor: 'black',
-  icon: '☀️',
+const lightTheme = {
+  mode: "light",
+  background: "#f5f6fa",
+  color: "#000",
+  icon: "☀️",
+  button: {
+    buttonBgColor: "#000",
+    buttonTextColor: "#fff",
+  },
+  navbar: {
+    background: "#fff",
+    color: "#000",
+  },
+}
 
-};
+const darkTheme = {
+  mode: "dark",
+  background: "#000",
+  color: "#fff",
+  icon: "🌜",
+  button: {
+    buttonBgColor: "#fff",
+    buttonTextColor: "#000",
+  },
+  navbar: {
+    background: "#111827",
+    color: "#fff",
+  },
+}
 
-export const darkTheme = {
-  backgroundColor: '#180A0A',
-  textColor: 'white',
-  icon: '🌙',
-};
+const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(lightTheme)
 
-// create a component that will provide the theme to its children
-
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(lightTheme);
-
-  // function to toggle between light and dark theme
   const toggleTheme = () => {
-    setTheme(theme === lightTheme ? darkTheme : lightTheme);
-  };
+    const newTheme = theme === lightTheme ? darkTheme : lightTheme
+    setTheme(newTheme)
+    localStorage.setItem("selectedTheme", JSON.stringify(newTheme))
+  }
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
+  // Retrieve theme from local storage, if available
+  useEffect(() => {
+    const savedTheme = JSON.parse(localStorage.getItem("selectedTheme"))
+    if (savedTheme) {
+      setTheme(savedTheme)
+    }
+  }, [])
+
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
+}
+
+export { ThemeProvider, ThemeContext }

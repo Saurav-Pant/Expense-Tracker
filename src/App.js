@@ -1,21 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Create from "./components/Create";
-import { ThemeProvider } from "./context/theme";
+import { ThemeContext } from "./context/theme";
+import Navbar from "./components/Navbar";
 
 const App = () => {
+  const { theme } = React.useContext(ThemeContext);
+
   return (
-    <ThemeProvider>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/create" element={<Create />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <div
+      style={{
+        backgroundColor: theme.background,
+        color: theme.color,
+      }}
+    >
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Login />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/create" element={<Create />} />
+      </Routes>
+    </div>
   );
 };
 
