@@ -1,15 +1,10 @@
 {
-    "builds": [
-      {
-        "src": "*.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "https://my-old-site.com"
-      }
-    ]
-  }
-  
+    "version": "1.7",
+"name":"Expense Tracker",
+"builds":[
+    {"src":"server.js","use":"@vercel/node"}
+],
+"routes":[
+    {"src":"/(.*)","dest":"/server.js"}
+]
+}
