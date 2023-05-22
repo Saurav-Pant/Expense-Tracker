@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 const Login = () => {
 
   const google = () => {
-    window.open("http://localhost:3001/auth/google/", "_self");
+    window.open("https://expense-tracker-wcf1.onrender.com/auth/google/", "_self");
   }
 
   return (
