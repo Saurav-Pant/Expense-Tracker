@@ -20,7 +20,7 @@ router.get("/authentication/success", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("http://localhost:3000/authentication");
+  res.redirect("https://expensetracker20.netlify.app/authentication");
 });
 
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
@@ -28,8 +28,8 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/dashboard",
-    failureRedirect: "http://localhost:3000/authentication",
+    successRedirect: "https://expensetracker20.netlify.app/dashboard",
+    failureRedirect: "https://expensetracker20.netlify.app/authentication",
   })
 );
 
