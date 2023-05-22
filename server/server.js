@@ -40,8 +40,11 @@ app.use("/api/records", createRoute); // Route for expense records
 
 app.use("/edit", editRoute); // Route for edit
 
+const URI =
+  "mongodb+srv://saurav:saurav@cluster0.wcen7ce.mongodb.net/?retryWrites=true&w=majority";
+
 mongoose
-  .connect("mongodb://127.0.0.1/expense-tracker", {
+  .connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

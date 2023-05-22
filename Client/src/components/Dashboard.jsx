@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Fetch data from the backend API
-    fetch("http://localhost:3001/api/records/create")
+    fetch("https://expense-tracker-wcf1.onrender.com/api/records/create")
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.log("Error:", error));
