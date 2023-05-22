@@ -62,9 +62,7 @@ const Dashboard = () => {
 
        {/* Filter with a filter function to show this month expenses */}
 
-       
-
-
+      
 
 
 
