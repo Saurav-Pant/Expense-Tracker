@@ -14,7 +14,7 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/records/create", {
+      const response = await fetch("https://expense-tracker-wcf1.onrender.com/api/records/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
