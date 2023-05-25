@@ -10,11 +10,12 @@ const Dashboard = () => {
   const location = useLocation();
   const saved = location.state && location.state.saved;
   const deleted = location.state && location.state.deleted;
+  const BASE_URL = process.env.BASE_URL;
 
   useEffect(() => {
     // Fetch data from the backend API
-    fetch("https://expense-tracker-wcf1.onrender.com/api/records/create")
-      .then((response) => response.json())
+    fetch(`${BASE_URL}/api/records/create`)
+    .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.log("Error:", error));
   }, []);

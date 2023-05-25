@@ -10,11 +10,13 @@ const Create = () => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
+  const BASE_URL = process.env.BASE_URL;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://expense-tracker-wcf1.onrender.com/api/records/create", {
+      const response = await fetch(`${BASE_URL}/api/records/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

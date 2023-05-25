@@ -12,9 +12,10 @@ const EditExpense = () => {
   const [amount, setAmount] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [description, setDescription] = useState("");
+  const BASE_URL = process.env.BASE_URL;
 
   useEffect(() => {
-    fetch(`https://expense-tracker-wcf1.onrender.com/edit/${id}`)
+    fetch(`${BASE_URL}/edit/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setExpense(data);
@@ -29,7 +30,7 @@ const EditExpense = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://expense-tracker-wcf1.onrender.com/edit/${id}`, {
+      const response = await fetch(`${BASE_URL}/edit/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +57,7 @@ const EditExpense = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`https://expense-tracker-wcf1.onrender.com/edit/${id}`, {
+      const response = await fetch(`${BASE_URL}/edit/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {

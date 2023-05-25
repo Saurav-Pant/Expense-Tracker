@@ -12,7 +12,10 @@ const editRoute = require("./router/editRoute");
 const app = express();
 app.use(express.json()); // For parsing application/json (middleware)
 
+const MONGO_URI = process.env.MONGO_URI;
+
 // Session middleware
+
 app.use(
   session({
     secret: "sauravpant",
@@ -41,13 +44,10 @@ app.use("/api/records", createRoute); // Route for expense records
 app.use("/edit", editRoute); // Route for edit
 
 mongoose
-  .connect(
-    "mongodb+srv://saurav:saurav@cluster0.wcen7ce.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to MongoDB");
   })

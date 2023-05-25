@@ -20,7 +20,7 @@ router.get("/authentication/success", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("https://expensetracker20.netlify.app/authentication");
+  res.redirect("https://expensetracker20.netlify.app/Authentication");
 });
 
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
