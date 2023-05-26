@@ -4,21 +4,22 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const session = require("express-session");
 const passport = require("passport");
-require("./passport");
+// require("./passport");
 const expenseRouter = require("./router/routers");
 const createRoute = require("./router/createRoute");
 const editRoute = require("./router/editRoute");
+const SignupRoute = require("./router/SignUp");
+const LoginRoute = require("./router/Login");
+const ProfileRoute = require("./router/profile");
 
 const app = express();
+const MONGO_URI = process.env.MONGO_URI;
 app.use(express.json()); // For parsing application/json (middleware)
 
-const MONGO_URI = process.env.MONGO_URI;
-
 // Session middleware
-
 app.use(
   session({
-    secret: "sauravpant",
+    secret: "sauravpant123",
     resave: false,
     saveUninitialized: false,
   })
@@ -42,6 +43,12 @@ app.use("/auth", expenseRouter); // Route for authentication
 app.use("/api/records", createRoute); // Route for expense records
 
 app.use("/edit", editRoute); // Route for edit
+
+app.use("/SignUp", SignupRoute); // Route for Signup
+
+app.use("/Login", LoginRoute); // Route for Login
+
+app.use("/profile", ProfileRoute); // Route for Profile
 
 mongoose
   .connect(MONGO_URI, {
