@@ -8,6 +8,8 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const BASE_URL = process.env.BASE_URL;
+
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -25,7 +27,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3001/signup/signup", {
+      const res = await axios.post(`${BASE_URL}/signup/signup`, {
         name,
         email,
         password,
