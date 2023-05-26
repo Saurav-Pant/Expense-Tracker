@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const BASE_URL = process.env.BASE_URL;
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -20,9 +21,12 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3001/login/login', { email, password });
+      const res = await axios.post(`${BASE_URL}/login/login`, {
+        email,
+        password,
+      });
       console.log(res.data); // Handle success response
-      navigate('/dashboard'); // Redirect to the dashboard
+      navigate("/dashboard"); // Redirect to the dashboard
     } catch (err) {
       console.error(err.response.data); // Handle error response
     }
@@ -38,7 +42,10 @@ const Login = () => {
         onSubmit={handleLogin}
       >
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -51,7 +58,10 @@ const Login = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
