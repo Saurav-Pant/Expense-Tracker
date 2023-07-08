@@ -24,13 +24,26 @@ const Dashboard = React.memo(() => {
 
   // Fetching Expenses Data
   useEffect(() => {
-    fetch("http://localhost:3001/api/records/create")
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("userId"); 
+        const response = await fetch(
+          `http://localhost:3001/api/records/create?userId=${userId}`, 
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        const data = await response.json();
         setData(data);
-        setData(data);
-      })
-      .catch((error) => console.log("Error:", error));
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   // Format Date
@@ -81,14 +94,14 @@ const Dashboard = React.memo(() => {
   }, [saved, deleted]);
 
   return (
-    <div className="h-[85vh] flex items-center justify-center">
-      <div className="container mx-auto p-4">
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="container mx-auto p-4 relative bottom-2 md:bottom-14 lg:bottom-16 ">
         <div className="flex flex-wrap justify-center">
           {data.length === 0 ? (
             <div className="text-center text-gray-500 m-auto ">
               <h1 className="text-6xl uppercase relative text-gray-300 animate-bounce">
                 <span className={`${hoverEffect ? "text-gray-400" : ""}`}>
-                  No expenses found.
+                  ADD Expenses
                 </span>
                 <span className="animate-pulse absolute top-0 left-0 text-gray-400 h-full w-full">
                   &nbsp;

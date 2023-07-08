@@ -10,7 +10,6 @@ const createRoute = require("./router/createRoute");
 const editRoute = require("./router/editRoute");
 const SignupRoute = require("./router/SignUp");
 const LoginRoute = require("./router/Login");
-const ProfileRoute = require("./router/ProfileImage");
 
 const app = express();
 const MONGO_URI = process.env.LOCAL_MONGO_URL;
@@ -46,8 +45,6 @@ app.use("/SignUp", SignupRoute); // Route for Signup
 
 app.use("/Login", LoginRoute); // Route for Login
 
-app.use("/ProfileImage", ProfileRoute); // Route for ProfileImage
-
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
@@ -61,6 +58,6 @@ mongoose
   });
 
 // Start the server
-app.listen(process.env.PORT || 3001, () => {
+app.listen(3001, () => {
   console.log("Server is running...");
 });

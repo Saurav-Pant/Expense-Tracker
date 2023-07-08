@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { motion } from "framer-motion";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
+import { GrFormPreviousLink } from "react-icons/gr";
 
 const EditExpense = () => {
   const { id } = useParams();
@@ -43,9 +44,7 @@ const EditExpense = () => {
         }),
       });
       if (response.ok) {
-        // Expense updated successfully
-        console.log("Expense updated");
-        navigate("/dashboard", { state: { saved: true } }); // Navigate to the dashboard page with the saved state
+        navigate("/dashboard", { state: { saved: true } }); 
       } else {
         // Failed to update the expense
         console.log("Failed to update the expense");
@@ -61,9 +60,7 @@ const EditExpense = () => {
         method: "DELETE",
       });
       if (response.ok) {
-        // Expense deleted successfully
-        console.log("Expense deleted");
-        navigate("/dashboard", { state: { deleted: true } }); // Navigate to the dashboard page with the deleted state
+        navigate("/dashboard", { state: { deleted: true } }); 
       } else {
         // Failed to delete the expense
         console.log("Failed to delete the expense");
@@ -79,6 +76,13 @@ const EditExpense = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
+      <div className="absolute top-5 left-5 mt-4 mr-4 bg-blue-400 rounded-full">
+        <span>
+          <Link to="/dashboard">
+            <GrFormPreviousLink size={60} color="#4FD1C5" />
+          </Link>
+        </span>
+      </div>
       <motion.div
         className="bg-white rounded-lg shadow-lg p-8 w-96"
         initial={{ scale: 0 }}
@@ -171,21 +175,6 @@ const EditExpense = () => {
           </div>
         </form>
       </motion.div>
-      <div className="absolute left-5 bottom-10">
-        <Link to="/dashboard">
-          <button className="relative inline-block text-lg group">
-            <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
-              <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
-              <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
-              <span className="relative">Dashboard</span>
-            </span>
-            <span
-              className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0"
-              data-rounded="rounded-lg"
-            ></span>
-          </button>
-        </Link>
-      </div>
     </div>
   );
 };

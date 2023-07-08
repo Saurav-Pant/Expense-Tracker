@@ -5,12 +5,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-const Signup = () => {
+const SignUp = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [profile, setProfile] = useState(null);
+  const [errors, setErrors] = useState(null);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -28,28 +29,32 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const profileImageString = await convertToBase64(profile); // Convert the selected image to base64
+      const formData = new FormData();
+      formData.append("profile", profile);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("password", password);
 
-      const res = await axios.post("http://localhost:3001/signup/signup", {
-        profile: profileImageString,
-        name,
-        email,
-        password,
-      });
-      console.log(res.data); // Handle success response
-      navigate("/dashboard"); // Redirect to the dashboard
+      const res = await axios.post(
+        "http://localhost:3001/signup/signup",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(res.data);
+      navigate("/dashboard");
     } catch (err) {
-      console.error(err.response.data); // Handle error response
+      if (err.response && err.response.data.errors) {
+        setErrors(err.response.data.errors.map((error) => error.msg));
+      } else if (err.response && err.response.data.msg) {
+        setErrors([err.response.data.msg]);
+      } else {
+        setErrors(["An error occurred. Please try again."]);
+      }
     }
-  };
-
-  const convertToBase64 = async (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => resolve(fileReader.result.split(",")[1]); // Extract the base64 string from the data URL
-      fileReader.onerror = (error) => reject(error);
-    });
   };
 
   const handleFileChange = (event) => {
@@ -57,7 +62,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen ">
+    <div className="flex justify-center items-center h-screen">
       <div className="absolute top-10 left-7">
         <Link
           to="/"
@@ -80,7 +85,6 @@ const Signup = () => {
         onSubmit={handleSignUp}
       >
         {/* Profile Section */}
-
         <div className="flex justify-center items-center">
           <label htmlFor="upload-input">
             <div
@@ -173,9 +177,17 @@ const Signup = () => {
             </span>
           </Link>
         </div>
+
+        {errors && (
+          <div className="text-red-500 mt-7 font-medium text-center text-sm animate-bounce">
+            {errors.map((error, index) => (
+              <div key={index}>{error}</div>
+            ))}
+          </div>
+        )}
       </motion.form>
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;

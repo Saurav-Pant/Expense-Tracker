@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [errors, setErrors] = useState(null);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,10 +27,19 @@ const Login = () => {
         email,
         password,
       });
-      console.log(res.data); // Handle success response
-      navigate("/dashboard"); // Redirect to the dashboard
+      const { token, user } = res.data; // Extract token and user object from response
+      localStorage.setItem("token", token);
+      localStorage.setItem("userId", user._id); // Store the user's _id in localStorage
+
+      navigate("/dashboard");
     } catch (err) {
-      console.error(err.response.data); // Handle error response
+      if (err.response && err.response.data.errors) {
+        setErrors(err.response.data.errors.map((error) => error.msg));
+      } else if (err.response && err.response.data.msg) {
+        setErrors([err.response.data.msg]);
+      } else {
+        setErrors(["An error occurred. Please try again."]);
+      }
     }
   };
 
@@ -93,7 +103,7 @@ const Login = () => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Sign In
+            Login
           </button>
           <a
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
@@ -102,6 +112,14 @@ const Login = () => {
             Forgot Password?
           </a>
         </div>
+
+        {errors && (
+          <div className="text-red-500 mt-7 font-medium text-center text-sm animate-bounce">
+            {errors.map((error, index) => (
+              <div key={index}>{error}</div>
+            ))}
+          </div>
+        )}
       </motion.form>
     </div>
   );

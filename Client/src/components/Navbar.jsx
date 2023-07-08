@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ThemeContext } from "../context/theme";
-import { motion } from "framer-motion";
 import Profile from "./ProfileIcon";
-import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import { FiGithub } from "react-icons/fi";
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const location = useLocation();
+  const token = localStorage.getItem("token");
   return (
     <>
       <div className="border-b-2 border-blue-500 transition-all hover:border-blue-600">
@@ -19,7 +19,7 @@ const Header = () => {
                 className={
                   "text-3xl font-bold text-color-" +
                   theme.textColor +
-                  " font-serif line-height-1.2 font-extrabold tracking-widest"
+                  " font-serif line-height-1.2 font-extrabold tracking-widest hover:text-blue-400 transition-all duration-500 ease-in-out"
                 }
               >
                 Expense
@@ -34,7 +34,11 @@ const Header = () => {
                 whileTap={{ scale: 0.9 }}
                 className="text-3xl drop-shadow-2xl"
               >
-                <Link to="https://github.com/Saurav-Pant/Expense-Tracker" target="_blank" rel="noopener noreferrer">
+                <Link
+                  to="https://github.com/Saurav-Pant/Expense-Tracker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FiGithub />
                 </Link>
               </motion.button>
@@ -50,7 +54,7 @@ const Header = () => {
               </motion.button>
             </div>
             <div className="">
-              {location.pathname === "/dashboard" ? (
+              {token ? (
                 <div className="hover:text-blue-400 transition-all">
                   <Profile />
                 </div>
