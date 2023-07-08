@@ -12,7 +12,7 @@ const SignupRoute = require("./router/SignUp");
 const LoginRoute = require("./router/Login");
 
 const app = express();
-const MONGO_URI = process.env.LOCAL_MONGO_URL;
+const MONGO_URI = process.env.MONGO_URL;
 
 app.use(express.json({ limit: "10mb" }));
 
