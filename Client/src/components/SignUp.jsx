@@ -24,26 +24,23 @@ const SignUp = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+  const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-  
+
     try {
       const formData = new FormData();
       formData.append("profile", profile);
       formData.append("name", name);
       formData.append("email", email);
       formData.append("password", password);
-  
-      const res = await axios.post(
-        `${process.env.SERVER_URL}/signup/signup`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+
+      const res = await axios.post(`${SERVER_URL}/signup/signup`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log(res.data);
       navigate("/dashboard");
     } catch (err) {
@@ -56,7 +53,6 @@ const SignUp = () => {
       }
     }
   };
-  
 
   const handleFileChange = (event) => {
     setProfile(event.target.files[0]);

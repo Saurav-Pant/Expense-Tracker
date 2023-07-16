@@ -15,8 +15,11 @@ const EditExpense = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [description, setDescription] = useState("");
 
+  const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
+
+
   useEffect(() => {
-    fetch(`${process.env.SERVER_URL}/edit/${id}`)
+    fetch(`${SERVER_URL}/edit/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setExpense(data);
@@ -31,7 +34,7 @@ const EditExpense = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.SERVER_URL}/edit/${id}`, {
+      const response = await fetch(`${SERVER_URL}/edit/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +59,7 @@ const EditExpense = () => {
   
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${process.env.SERVER_URL}/edit/${id}`, {
+      const response = await fetch(`${SERVER_URL}/edit/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {

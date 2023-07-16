@@ -22,6 +22,8 @@ const Dashboard = React.memo(() => {
     return () => clearTimeout(timer);
   }, []);
 
+  const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
+  
   // Fetching Expenses Data
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +31,7 @@ const Dashboard = React.memo(() => {
         const token = localStorage.getItem("token");
         const userId = localStorage.getItem("userId"); 
         const response = await fetch(
-          `${process.env.SERVER_URL}/api/records/create?userId=${userId}`, 
+          `${SERVER_URL}/api/records/create?userId=${userId}`, 
           {
             headers: {
               Authorization: token,
@@ -46,7 +48,7 @@ const Dashboard = React.memo(() => {
     fetchData();
   }, []);
   
-
+console.log(process.env.BACKEND_URL)
   // Format Date
   const formatDate = (date) => {
     const formattedDate = format(new Date(date), "dd/MM/yyyy");

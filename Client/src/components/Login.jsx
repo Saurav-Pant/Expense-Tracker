@@ -21,12 +21,14 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
   
     try {
-      const res = await axios.post(`${process.env.SERVER_URL}/login/login`, {
+      const res = await axios.post(`${SERVER_URL}/login/login`, {
         email,
         password,
       });
