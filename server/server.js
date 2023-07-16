@@ -24,10 +24,6 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.send("Working Fine");
-});
-
 app.use(
   cors({
     origin: "*",
@@ -48,6 +44,12 @@ app.use("/edit", editRoute); // Route for edit
 app.use("/SignUp", SignupRoute); // Route for Signup
 
 app.use("/Login", LoginRoute); // Route for Login
+
+app.get("/", (req, res) => {
+  res.json(
+    "Welcome to the Expense Tracker API. Please use a valid route to access the data."
+  );
+});
 
 mongoose
   .connect(MONGO_URI, {
