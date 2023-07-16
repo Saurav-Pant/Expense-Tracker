@@ -22,8 +22,11 @@ const Dashboard = React.memo(() => {
     return () => clearTimeout(timer);
   }, []);
 
+  const BACKEND_URL= "https://expense-087x.onrender.com/"
+
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
-  console.log(process.env.REACT_APP_BACKEND_URL )
+  // console.log(process.env.REACT_APP_BACKEND_URL )
+  console.log(BACKEND_URL)
   
   // Fetching Expenses Data
   useEffect(() => {
@@ -32,7 +35,7 @@ const Dashboard = React.memo(() => {
         const token = localStorage.getItem("token");
         const userId = localStorage.getItem("userId"); 
         const response = await fetch(
-          `${REACT_APP_BACKEND_URL}/api/records/create?userId=${userId}`, 
+          `${BACKEND_URL}/api/records/create?userId=${userId}`, 
           {
             headers: {
               Authorization: token,
