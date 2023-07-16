@@ -12,13 +12,13 @@ const Create = () => {
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   
-  const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
+  const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${SERVER_URL}/api/records/create`, {
+      const response = await fetch(`${REACT_APP_BACKEND_URL}/api/records/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

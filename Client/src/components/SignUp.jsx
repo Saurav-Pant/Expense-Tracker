@@ -24,8 +24,8 @@ const SignUp = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
-  console.log(SERVER_URL)
+  const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+  console.log(REACT_APP_BACKEND_URL)
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const SignUp = () => {
       formData.append("email", email);
       formData.append("password", password);
 
-      const res = await axios.post(`${SERVER_URL}/signup/signup`, formData, {
+      const res = await axios.post(`${REACT_APP_BACKEND_URL}/signup/signup`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
