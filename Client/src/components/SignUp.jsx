@@ -25,6 +25,7 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
   const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
+  console.log(SERVER_URL)
 
   const handleSignUp = async (e) => {
     e.preventDefault();

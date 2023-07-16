@@ -23,6 +23,7 @@ const Dashboard = React.memo(() => {
   }, []);
 
   const SERVER_URL = process.env.BACKEND_URL || "http://localhost:3001";
+  console.log(SERVER_URL)
   
   // Fetching Expenses Data
   useEffect(() => {
@@ -48,7 +49,6 @@ const Dashboard = React.memo(() => {
     fetchData();
   }, []);
   
-console.log(process.env.BACKEND_URL)
   // Format Date
   const formatDate = (date) => {
     const formattedDate = format(new Date(date), "dd/MM/yyyy");
