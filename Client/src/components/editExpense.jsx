@@ -16,7 +16,7 @@ const EditExpense = () => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/edit/${id}`)
+    fetch(`${process.env.SERVER_URL}/edit/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setExpense(data);
@@ -27,11 +27,11 @@ const EditExpense = () => {
       })
       .catch((error) => console.log("Error:", error));
   }, [id]);
-
+  
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3001/edit/${id}`, {
+      const response = await fetch(`${process.env.SERVER_URL}/edit/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -53,10 +53,10 @@ const EditExpense = () => {
       console.log("Error:", error);
     }
   };
-
+  
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/edit/${id}`, {
+      const response = await fetch(`${process.env.SERVER_URL}/edit/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -69,6 +69,7 @@ const EditExpense = () => {
       console.log("Error:", error);
     }
   };
+  
 
   if (!expense) {
     return <div>Loading...</div>;

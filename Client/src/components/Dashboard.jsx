@@ -29,7 +29,7 @@ const Dashboard = React.memo(() => {
         const token = localStorage.getItem("token");
         const userId = localStorage.getItem("userId"); 
         const response = await fetch(
-          `http://localhost:3001/api/records/create?userId=${userId}`, 
+          `${process.env.SERVER_URL}/api/records/create?userId=${userId}`, 
           {
             headers: {
               Authorization: token,
@@ -42,9 +42,10 @@ const Dashboard = React.memo(() => {
         console.log("Error:", error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   // Format Date
   const formatDate = (date) => {

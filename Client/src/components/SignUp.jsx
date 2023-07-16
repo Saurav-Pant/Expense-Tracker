@@ -27,16 +27,16 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+  
     try {
       const formData = new FormData();
       formData.append("profile", profile);
       formData.append("name", name);
       formData.append("email", email);
       formData.append("password", password);
-
+  
       const res = await axios.post(
-        "http://localhost:3001/signup/signup",
+        `${process.env.SERVER_URL}/signup/signup`,
         formData,
         {
           headers: {
@@ -56,6 +56,7 @@ const SignUp = () => {
       }
     }
   };
+  
 
   const handleFileChange = (event) => {
     setProfile(event.target.files[0]);
