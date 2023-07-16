@@ -23,7 +23,7 @@ const Dashboard = React.memo(() => {
   }, []);
 
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
-  console.log(REACT_APP_BACKEND_URL)
+  console.log(process.env.REACT_APP_BACKEND_URL )
   
   // Fetching Expenses Data
   useEffect(() => {
