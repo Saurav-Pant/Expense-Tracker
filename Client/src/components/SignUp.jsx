@@ -25,9 +25,9 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
   const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
-  console.log(REACT_APP_BACKEND_URL)
   const BACKEND_URL= "https://expense-087x.onrender.com/"
-
+  console.log(BACKEND_URL)
+  
 
   const handleSignUp = async (e) => {
     e.preventDefault();
