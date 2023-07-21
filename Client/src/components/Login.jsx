@@ -21,25 +21,21 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
-  const BACKEND_URL= "https://expense-087x.onrender.com/"
-  
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     try {
-      const res = await axios.post(`${BACKEND_URL}/login/login`, {
+      const res = await axios.post("http://localhost:3001/login/login", {
         email,
         password,
       });
       const { token, user } = res.data;
       localStorage.setItem("token", token);
       localStorage.setItem("userId", user._id);
-  
+
       await new Promise((resolve) => setTimeout(resolve, 1500)); // Delay for 1500 milliseconds (1.5 seconds)
-  
+
       navigate("/dashboard");
     } catch (err) {
       if (err.response && err.response.data.errors) {
@@ -53,7 +49,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className="flex justify-center items-center h-screen ">

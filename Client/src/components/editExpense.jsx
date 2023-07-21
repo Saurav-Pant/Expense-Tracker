@@ -15,12 +15,8 @@ const EditExpense = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [description, setDescription] = useState("");
 
-  const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
-  const BACKEND_URL= "https://expense-087x.onrender.com/"
-
-
   useEffect(() => {
-    fetch(`${BACKEND_URL}/edit/${id}`)
+    fetch(`http://localhost:3001/edit/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setExpense(data);
@@ -31,11 +27,11 @@ const EditExpense = () => {
       })
       .catch((error) => console.log("Error:", error));
   }, [id]);
-  
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${BACKEND_URL}/edit/${id}`, {
+      const response = await fetch(`http://localhost:3001/edit/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -57,10 +53,10 @@ const EditExpense = () => {
       console.log("Error:", error);
     }
   };
-  
+
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/edit/${id}`, {
+      const response = await fetch(`http://localhost:3001/edit/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -73,7 +69,6 @@ const EditExpense = () => {
       console.log("Error:", error);
     }
   };
-  
 
   if (!expense) {
     return <div>Loading...</div>;

@@ -11,16 +11,11 @@ const Create = () => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
-  
-  const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
-  const BACKEND_URL= "https://expense-087x.onrender.com/"
-  
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${BACKEND_URL}/api/records/create`, {
+      const response = await fetch("http://localhost:3001/api/records/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,11 +41,10 @@ const Create = () => {
         // Failed to save the record
         console.log("Failed to save the record. Server response:", await response.json());
       }
+      
     } catch (error) {
-      // Handle the error
     }
   };
-  
 
   return (
     <div className="flex items-center justify-center h-screen">
