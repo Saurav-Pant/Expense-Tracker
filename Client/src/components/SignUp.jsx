@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { BASE_URL } from "../app/base";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -36,7 +37,8 @@ const SignUp = () => {
       formData.append("password", password);
 
       const res = await axios.post(
-        "http://localhost:3001/signup/signup",
+        // "http://localhost:3001/signup/signup",
+        `${BASE_URL}/signup/signup`,
         formData,
         {
           headers: {

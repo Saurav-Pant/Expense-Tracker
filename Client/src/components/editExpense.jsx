@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
+import { BASE_URL } from "../app/base";
 
 const EditExpense = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const EditExpense = () => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/edit/${id}`)
+    fetch(`${BASE_URL}/edit/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setExpense(data);
@@ -31,7 +32,7 @@ const EditExpense = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3001/edit/${id}`, {
+      const response = await fetch(`${BASE_URL}/edit/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +45,7 @@ const EditExpense = () => {
         }),
       });
       if (response.ok) {
-        navigate("/dashboard", { state: { saved: true } }); 
+        navigate("/dashboard", { state: { saved: true } });
       } else {
         // Failed to update the expense
         console.log("Failed to update the expense");
@@ -56,11 +57,11 @@ const EditExpense = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/edit/${id}`, {
+      const response = await fetch(`${BASE_URL}/edit/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
-        navigate("/dashboard", { state: { deleted: true } }); 
+        navigate("/dashboard", { state: { deleted: true } });
       } else {
         // Failed to delete the expense
         console.log("Failed to delete the expense");

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "./Loading";
+import { BASE_URL } from "../app/base";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,11 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3001/login/login", {
+      const res = await axios.post(
+        // "http://localhost:3001/login/login", 
+        `${BASE_URL}/login/login`,
+        
+        {
         email,
         password,
       });

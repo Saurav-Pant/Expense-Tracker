@@ -4,6 +4,7 @@ import AddButton from "./Add_Button";
 import { format } from "date-fns";
 import { Link, useLocation } from "react-router-dom";
 import Shimmer from "./Shimmer";
+import { BASE_URL } from "../app/base";
 
 const Dashboard = React.memo(() => {
   const [data, setData] = useState([]);
@@ -29,7 +30,8 @@ const Dashboard = React.memo(() => {
         const token = localStorage.getItem("token");
         const userId = localStorage.getItem("userId"); 
         const response = await fetch(
-          `http://localhost:3001/api/records/create?userId=${userId}`, 
+          // `http://localhost:3001/api/records/create?userId=${userId}`, 
+          `${BASE_URL}/api/records/create?userId=${userId}`,
           {
             headers: {
               Authorization: token,

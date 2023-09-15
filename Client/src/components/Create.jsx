@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
 import { GrFormPreviousLink } from "react-icons/gr";
+import { BASE_URL } from "../app/base";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -15,19 +16,23 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/records/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title,
-          amount,
-          date: selectedDate,
-          description,
-          userId: localStorage.getItem("userId"), 
-        }),
-      });
+      const response = await fetch(
+        // "http://localhost:3001/api/records/create"
+        `${BASE_URL}/api/records/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            amount,
+            date: selectedDate,
+            description,
+            userId: localStorage.getItem("userId"),
+          }),
+        }
+      );
       if (response.ok) {
         // Record saved successfully
         const data = await response.json();
@@ -39,11 +44,12 @@ const Create = () => {
         navigate("/dashboard", { state: { saved: true } }); // Redirect to the dashboard page with the saved state
       } else {
         // Failed to save the record
-        console.log("Failed to save the record. Server response:", await response.json());
+        console.log(
+          "Failed to save the record. Server response:",
+          await response.json()
+        );
       }
-      
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   return (
