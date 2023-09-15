@@ -29,7 +29,7 @@ const Dashboard = React.memo(() => {
         const token = localStorage.getItem("token");
         const userId = localStorage.getItem("userId"); 
         const response = await fetch(
-          `https://expense-087x.onrender.com/api/records/create?userId=${userId}`, 
+          `http://localhost:3001/api/records/create?userId=${userId}`, 
           {
             headers: {
               Authorization: token,
@@ -92,6 +92,8 @@ const Dashboard = React.memo(() => {
     localStorage.setItem("saved", saved);
     localStorage.setItem("deleted", deleted);
   }, [saved, deleted]);
+
+
 
   return (
     <div className="flex items-center justify-center min-h-screen">
