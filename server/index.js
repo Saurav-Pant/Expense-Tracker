@@ -34,8 +34,4 @@ app.use("/edit", editRoute); // Route for edit
 app.use("/SignUp", SignupRoute); // Route for Signup
 app.use("/Login", LoginRoute); // Route for Login
 
-app.use("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 module.exports = app;
