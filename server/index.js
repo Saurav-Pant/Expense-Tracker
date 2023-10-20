@@ -30,6 +30,10 @@ app.use(cors(corsOpts));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/", (req, res) => {
+  res.send("Checking is working or not");
+});
+
 app.use("/api/records", createRoute); // Route for expense records
 app.use("/edit", editRoute); // Route for edit
 app.use("/SignUp", SignupRoute); // Route for Signup
