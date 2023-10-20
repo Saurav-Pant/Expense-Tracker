@@ -28,13 +28,19 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        // "http://localhost:3001/login/login", 
+        // "http://localhost:3001/login/login",
         `${BASE_URL}/login/login`,
-        
+
         {
-        email,
-        password,
-      });
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       const { token, user } = res.data;
       localStorage.setItem("token", token);
       localStorage.setItem("userId", user._id);
