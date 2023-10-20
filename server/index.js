@@ -26,6 +26,7 @@ const corsOpts = {
   exposedHeaders: ["Content-Type"],
 };
 app.use(cors(corsOpts));
+app.options("*", cors());
 
 app.use(passport.initialize());
 app.use(passport.session());
