@@ -18,16 +18,14 @@ app.use(
   })
 );
 
-app.use(
-  cors({
-    origin: [
-      "https://expense-tracker-client-k505.onrender.com/",
-      "http:localhost:3000",
-    ],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-  })
-);
+const corsOpts = {
+  origin: "*",
+  credentials: true,
+  methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+  exposedHeaders: ["Content-Type"],
+};
+app.use(cors(corsOpts));
 
 app.use(passport.initialize());
 app.use(passport.session());
