@@ -24,14 +24,13 @@ const corsOpts = {
   methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
 };
 app.use(cors(corsOpts));
-app.options("*", cors());
+
+app.use("/", (req, res) => {
+  res.send("Working Fine");
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use("/", (req, res) => {
-  res.send("Checking is working or not");
-});
 
 app.use("/api/records", createRoute); // Route for expense records
 app.use("/edit", editRoute); // Route for edit
