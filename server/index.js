@@ -20,7 +20,10 @@ app.use(
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+      "https://expense-tracker-client-k505.onrender.com/",
+      "http:localhost:3000",
+    ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
