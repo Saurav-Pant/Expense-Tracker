@@ -54,7 +54,7 @@ router.post(
           if (err) throw err;
 
           res.json({ token, user });
-          res.cookie(token);
+          res.cookie(token, { secure: true });
         }
       );
     } catch (err) {
