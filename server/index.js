@@ -33,10 +33,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 
-app.use("/", (req, res) => {
-  res.status(200).json("Working Fine");
-});
-
 app.use("/api/records", createRoute); // Route for expense records
 app.use("/edit", editRoute); // Route for edit
 app.use("/signup", SignupRoute); // Route for Signup
