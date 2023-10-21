@@ -31,7 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", (req, res) => {
-  res.json(200).json("Working Fine");
+  res.status(200).json("Working Fine");
 });
 
 app.use("/api/records", createRoute); // Route for expense records

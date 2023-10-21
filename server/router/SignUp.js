@@ -93,7 +93,7 @@ router.post(
 );
 
 router.get("/signup", (req, res) => {
-  res.json(200).json("Signup Page");
+  res.status(200).json("SignUp page");
 });
 
 module.exports = router;
