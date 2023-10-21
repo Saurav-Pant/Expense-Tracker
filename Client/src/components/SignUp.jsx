@@ -39,7 +39,7 @@ const SignUp = () => {
       formData.append("email", email);
       formData.append("password", password);
   
-      const res = await fetch("https://expense-087x.onrender.com/signup/signup", {
+      const res = await fetch(`${BASE_URL}/signup/signup`, {
         method: 'POST',
         body: formData,
         headers: {
