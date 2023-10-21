@@ -40,6 +40,7 @@ const Login = () => {
             "Content-Type": "application/json",
           },
           method: "POST",
+          credentials: 'include'
         }
       );
       const { token, user } = res.data;

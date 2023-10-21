@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const createRoute = require("./router/createRoute");
 const editRoute = require("./router/editRoute");
@@ -9,6 +10,14 @@ const SignupRoute = require("./router/SignUp");
 const LoginRoute = require("./router/Login");
 
 const app = express();
+
+const corsOpts = {
+  origin: "*",
+  methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
+  credentials: true,
+};
+
+app.use(cors(corsOpts));
 
 app.use(express.json({ limit: "10mb" }));
 
@@ -20,15 +29,9 @@ app.use(
   })
 );
 
-const corsOpts = {
-  origin: "*",
-  methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
-};
-
-app.use(cors(corsOpts));
-
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser());
 
 app.use("/", (req, res) => {
   res.status(200).json("Working Fine");
