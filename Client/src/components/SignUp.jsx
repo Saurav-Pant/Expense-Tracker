@@ -38,7 +38,8 @@ const SignUp = () => {
 
       const res = await axios.post(
         // "http://localhost:3001/signup/signup",
-        `${BASE_URL}/signup/signup`,
+        // `${BASE_URL}/signup/signup`,
+        "https://expense-087x.onrender.com/signup/signup",
         formData,
         {
           headers: {
