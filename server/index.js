@@ -24,11 +24,8 @@ const corsOpts = {
   origin: "*",
   methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
 };
-app.use(cors(corsOpts));
 
-// app.use("/", (req, res) => {
-//   res.send("Working Fine");
-// });
+app.use(cors(corsOpts));
 
 app.use(passport.initialize());
 app.use(passport.session());
