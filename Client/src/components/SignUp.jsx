@@ -26,28 +26,28 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+   // "http://localhost:3001/signup/signup",
+   // `${BASE_URL}/signup/signup`,
 
+   const handleSignUp = async (e) => {
+    e.preventDefault();
+  
     try {
       const formData = new FormData();
       formData.append("profile", profile);
       formData.append("name", name);
       formData.append("email", email);
       formData.append("password", password);
-
-      const res = await axios.post(
-        // "http://localhost:3001/signup/signup",
-        // `${BASE_URL}/signup/signup`,
-        "https://expense-087x.onrender.com/signup/signup",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log(res.data);
+  
+      const res = await fetch("https://expense-087x.onrender.com/signup/signup", {
+        method: 'POST',
+        body: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const resData = await res.json();
+      console.log(resData);
       navigate("/dashboard");
     } catch (err) {
       if (err.response && err.response.data.errors) {
@@ -59,6 +59,7 @@ const SignUp = () => {
       }
     }
   };
+  
 
   const handleFileChange = (event) => {
     setProfile(event.target.files[0]);
