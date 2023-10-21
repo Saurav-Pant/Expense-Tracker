@@ -1,0 +1,11 @@
+{
+    "version": 2,
+    "name": "Expense Tracker",
+    "builds": [
+      { "src": "script.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/index.js" }
+    ]
+  }
+  
