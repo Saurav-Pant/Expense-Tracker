@@ -38,7 +38,7 @@ const SignUp = () => {
 
       const res = await axios.post(
         // "http://localhost:3001/signup/signup",
-        `${BASE_URL}/signup/signup`,
+        `${BASE_URL}signup/signup`,
         formData,
         {
           headers: {
