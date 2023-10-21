@@ -37,8 +37,9 @@ const Login = () => {
       },
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
+        method: "POST",
       }
       );
       const { token, user } = res.data;
@@ -83,6 +84,7 @@ const Login = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         onSubmit={handleLogin}
+        method="POST"
       >
         <div className="mb-4">
           <label
