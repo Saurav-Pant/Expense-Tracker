@@ -30,9 +30,13 @@ app.use(cors(corsOpts));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/", (req, res) => {
+  res.json(200).json("Working Fine");
+});
+
 app.use("/api/records", createRoute); // Route for expense records
 app.use("/edit", editRoute); // Route for edit
-app.use("/SignUp", SignupRoute); // Route for Signup
+app.use("/signup", SignupRoute); // Route for Signup
 app.use("/login", LoginRoute); // Route for Login
 
 module.exports = app;

@@ -63,4 +63,8 @@ router.post(
   }
 );
 
+router.get("/login", (req, res) => {
+  res.json(200).json("Login Page");
+});
+
 module.exports = router;

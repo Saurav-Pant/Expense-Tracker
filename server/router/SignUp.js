@@ -92,4 +92,8 @@ router.post(
   }
 );
 
+router.get("/signup", (req, res) => {
+  res.json(200).json("Signup Page");
+});
+
 module.exports = router;
