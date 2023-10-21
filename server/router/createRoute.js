@@ -7,6 +7,11 @@ router
 
   // POST request to create a new expense record
   .post(async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
     try {
       const { title, amount, date, description, userId } = req.body;
       const newRecord = new ExpenseRecord({
@@ -24,6 +29,12 @@ router
   })
 
   .get(async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+
     try {
       const records = await ExpenseRecord.find({ user: req.query.userId });
       res.status(200).json(records);

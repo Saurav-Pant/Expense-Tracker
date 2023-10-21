@@ -6,6 +6,12 @@ router
   .route("/:id")
   // GET request to fetch a specific expense record
   .get(async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+
     try {
       const { id } = req.params;
       const record = await ExpenseRecord.findById(id);
@@ -20,6 +26,12 @@ router
 
   // PUT request to update a specific expense record
   .put(async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+
     try {
       const { id } = req.params;
       const { title, amount, date, description } = req.body;

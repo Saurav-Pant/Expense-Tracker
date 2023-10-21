@@ -28,19 +28,19 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        // "http://localhost:3001/login/login", 
+        // "http://localhost:3001/login/login",
         `${BASE_URL}/login/login`,
-        
+
         {
-        email,
-        password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
+          email,
+          password,
         },
-        method: "POST",
-      }
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        }
       );
       const { token, user } = res.data;
       localStorage.setItem("token", token);
