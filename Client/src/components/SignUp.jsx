@@ -26,21 +26,25 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
 
-   // "http://localhost:3001/signup/signup",
-   // `${BASE_URL}/signup/signup`,
+  // "http://localhost:3001/signup/signup",
+  // `${BASE_URL}/signup/signup`,
 
-   const handleSignUp = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-  
+
     try {
       const formData = new FormData();
       formData.append("profile", profile);
       formData.append("name", name);
       formData.append("email", email);
       formData.append("password", password);
-  
-      const res = await fetch(`${BASE_URL}/signup/signup`, {
-        method: 'POST',
+
+      const path = "/signup/signup";
+      const signupURL = new URL(path, BASE_URL);
+      
+
+      const res = await fetch(signupURL, {
+        method: "POST",
         body: formData,
         headers: {
           "Content-Type": "multipart/form-data",
@@ -59,7 +63,6 @@ const SignUp = () => {
       }
     }
   };
-  
 
   const handleFileChange = (event) => {
     setProfile(event.target.files[0]);
