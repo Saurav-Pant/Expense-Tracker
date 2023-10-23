@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -39,9 +38,9 @@ const SignUp = () => {
       formData.append("email", email);
       formData.append("password", password);
 
-      const path = "/signup/signup";
+      const path = "signup/signup";
       const signupURL = new URL(path, BASE_URL);
-      
+
 
       const res = await fetch(signupURL, {
         method: "POST",
