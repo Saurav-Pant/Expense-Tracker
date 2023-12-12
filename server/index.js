@@ -29,6 +29,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
